@@ -161,7 +161,7 @@ def _getmultiparttext(msg: StdlibEmailMessage) -> StdlibEmailMessage:
 
 
 def _parseattachment(part: StdlibEmailMessage) -> r.EmailAttachment:
-    return r.EmailAttachment(data=part.get_content(), filename=part.get_filename(''))
+    return r.EmailAttachment(data=part.get_content() or b'\n', filename=part.get_filename(''))
 
 
 def _logmessage(msg: r.EmailMessage) -> str:
